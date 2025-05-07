@@ -462,14 +462,6 @@ function RecipeList() {
 
         {/* Results Summary */}
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, px: 1 }}>
-          <Typography variant="subtitle1" color="text.secondary">
-            {filteredRecipes.length === 0 
-              ? "No recipes found" 
-              : filteredRecipes.length === 1 
-                ? "1 recipe found" 
-                : `${filteredRecipes.length} recipes found`
-            }
-          </Typography>
         </Box>
 
         {/* Recipe Grid */}
@@ -487,14 +479,6 @@ function RecipeList() {
             <Typography variant="h6" mt={2} color="text.secondary">
               No recipes match your search criteria
             </Typography>
-            <Button 
-              variant="outlined" 
-              color="primary" 
-              sx={{ mt: 3 }}
-              onClick={resetFilters}
-            >
-              Clear all filters
-            </Button>
           </Box>
         ) : (
           <Grid container spacing={4}>

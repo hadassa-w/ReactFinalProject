@@ -110,11 +110,11 @@ function AddRecipe() {
             Description: "",
             Duration: "",
             Difficulty: "",
-            Img: "/IMG/",
+            Img: "",
             Categoryid: 0,
             UserId: Number(userId),
             Instructions: [{ Name: "" }],
-            Ingridents: [{ Name: "", Count: 0, Type: "" }],
+            Ingridents: [{ Name: "", Count: 0, Type: "",RecipeId: Number(id) }],
         },
         mode: "onChange"
     });
@@ -354,10 +354,10 @@ const handleNext = async () => {
                                     InputProps={{
                                         startAdornment: <ImageIcon sx={{ color: 'primary.main', mr: 1 }} />,
                                     }}
-                                    value={field.value?.replace(/^\/?IMG\//, '') || ''}
+                                    value={field.value || ''}
                                     onChange={(e) => {
                                         const value = e.target.value;
-                                        const withPrefix = `/IMG/${value.replace(/^\/?IMG\//, '')}`;
+                                        const withPrefix = `${value.replace(/^\/?IMG\//, '')}`;
                                         field.onChange(withPrefix);
                                     }}
                                     error={!!errors.Img}
@@ -498,7 +498,7 @@ const handleNext = async () => {
                         <Button
                             variant="outlined"
                             startIcon={<Add />}
-                            onClick={() => appendIngredient({ Name: "", Count: 0, Type: "" })}
+                            onClick={() => appendIngredient({ Name: "", Count: 0, Type: "", RecipeId: Number(id) })}
                             sx={{
                                 borderRadius: 4,
                                 textTransform: "none",
@@ -561,7 +561,7 @@ const handleNext = async () => {
                         <Button
                             variant="outlined"
                             startIcon={<Add />}
-                            onClick={() => appendInstruction({ Name: "" })}
+                            onClick={() => appendInstruction({ Name: "",RecipeId: Number(id) })}
                             sx={{
                                 borderRadius: 4,
                                 textTransform: "none",
