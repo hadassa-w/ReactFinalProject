@@ -3,17 +3,20 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter } from 'react-router-dom'
-import Home from './components/home.tsx'
+import Home from './components/wellcome.tsx'
 import LogIn from './components/login.tsx'
 import Register from './components/register.tsx'
 import MyRecipes from './components/myRecipes.tsx'
 import Recipes from './components/recipes.tsx'
 import AddRecipes from './components/addRecipe.tsx'
+import { AuthProvider } from './context/authContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <AuthProvider>
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  </AuthProvider>
 )
 
 createBrowserRouter([
@@ -27,11 +30,11 @@ createBrowserRouter([
       },
       {
         path: "logIn",
-        element: <LogIn  setIsLoggedIn={() => { }}/> // העברת הפונקציה setIsLoggedIn כפרופס
+        element: <LogIn />
       },
       {
         path: "register",
-        element: <Register setIsLoggedIn={() => { }} />
+        element: <Register />
       },
       {
         path: "myRecipes",
